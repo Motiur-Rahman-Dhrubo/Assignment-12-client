@@ -1,9 +1,10 @@
+import NavBar from "./components/NavBar/NavBar";
 
 function App() {
 
   return (
     <>
-    <button className='btn'>button</button>
+    <NavBar></NavBar>
     </>
   )
 }
