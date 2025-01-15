@@ -10,8 +10,8 @@ const NavBar = () => {
         <li><NavLink className='py-0 px-0 w-min' to="/apartment">Apartment</NavLink></li>
     </>
     return (
-        <div className="sticky border-b">
-            <div className="navbar bg-base-100 w-11/12 mx-auto px-0">
+        <div className="sticky border-b top-0 z-50 bg-base-100">
+            <div className="navbar w-11/12 mx-auto px-0">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost md:hidden shadow mr-2">
