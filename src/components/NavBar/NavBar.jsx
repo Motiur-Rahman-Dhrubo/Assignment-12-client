@@ -42,7 +42,7 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <Link to='login' className="text-xl text-black font-semibold flex items-center gap-1 border border-black py-2 px-4 hover:bg-black hover:text-white"><FaUser />Login</Link>
+                    <Link to='login' className="text-xl text-black font-semibold flex items-center gap-1 border border-black py-2 px-4 hover:bg-black hover:text-white transition-all duration-[300ms]"><FaUser />Login</Link>
                 </div>
             </div>
         </div>
