@@ -5,7 +5,7 @@ const LocationSec = () => {
     const position = { lat: 23.794446, lng: 90.402678 };
 
     return (
-        <div className="mt-8 md:mt-12 w-full mb-96">
+        <div className="mt-8 md:mt-12 w-full">
             <div className="w-11/12 mx-auto">
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center text-black">
                     Our Location
