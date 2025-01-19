@@ -7,7 +7,7 @@ const NavBar = () => {
 
     const links = <>
         <li><NavLink className='py-0 px-0 w-min' to="/">Home</NavLink></li>
-        <li><NavLink className='py-0 px-0 w-min' to="/apartment">Apartment</NavLink></li>
+        <li><NavLink className='py-0 px-0 w-min' to="/apartments">Apartment</NavLink></li>
     </>
     return (
         <div className="sticky border-b top-0 z-50 bg-base-100">
