@@ -4,11 +4,14 @@ import './index.css'
 import { RouterProvider } from "react-router-dom";
 import Router from './routes/Router';
 import { APIProvider } from '@vis.gl/react-google-maps';
+import AuthProvider from './providers/AuthProvider';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <APIProvider apiKey={import.meta.env.VITE_apiKey_map}>
-      <RouterProvider router={Router} />
-    </APIProvider>
+    <AuthProvider>
+      <APIProvider apiKey={import.meta.env.VITE_apiKey_map}>
+        <RouterProvider router={Router} />
+      </APIProvider>
+    </AuthProvider>
   </StrictMode>
 )
