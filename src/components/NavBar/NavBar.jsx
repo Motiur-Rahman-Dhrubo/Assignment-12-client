@@ -30,14 +30,14 @@ const NavBar = () => {
                         </div>
                         <ul
                             tabIndex={0}
-                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-3 shadow uppercase font-semibold text-black text-base gap-1">
+                            className="menu menu-nav menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-3 shadow uppercase font-semibold text-black text-base gap-1">
                             {links}
                         </ul>
                     </div>
                     <Link to='/' className="flex text-2xl items-center font-bold"><BsBuildingsFill />M.tower</Link>
                 </div>
                 <div className="navbar-center hidden md:flex">
-                    <ul className="menu menu-horizontal uppercase font-semibold text-black text-base p-0 gap-4">
+                    <ul className="menu menu-nav menu-horizontal uppercase font-semibold text-black text-base p-0 gap-4">
                         {links}
                     </ul>
                 </div>

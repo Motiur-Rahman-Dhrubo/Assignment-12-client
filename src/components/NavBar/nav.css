@@ -1,20 +1,20 @@
-.menu li>*:not(ul, .menu-title, details, .btn):active,
-.menu li>*:not(ul, .menu-title, details, .btn).active,
-.menu li>details>summary:active {
+.menu-nav li>*:not(ul, .menu-title, details, .btn):active,
+.menu-nav li>*:not(ul, .menu-title, details, .btn).active,
+.menu-nav li>details>summary:active {
     background-color: transparent;
     color: black;
     border-radius: 0px;
 }
 
-.menu li a {
+.menu-nav li a {
     position: relative;
 }
 
-.menu li a:hover {
+.menu-nav li a:hover {
     background-color: transparent;
 }
 
-.menu li a::after {
+.menu-nav li a::after {
     content: '';
     position: absolute;
     bottom: 2px;
@@ -24,11 +24,11 @@
     transition: width 0.3s ease;
 }
 
-.menu li a:hover::after {
+.menu-nav li a:hover::after {
     width: 100%;
 }
 
-.menu li a.active::after {
+.menu-nav li a.active::after {
     content: '';
     position: absolute;
     bottom: 2px;
