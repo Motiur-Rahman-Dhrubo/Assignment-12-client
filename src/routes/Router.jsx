@@ -4,6 +4,7 @@ import ErrorPage from "../layouts/ErrorPage/ErrorPage";
 import Home from "../layouts/Home/Home";
 import Apartments from "../layouts/Apartments/Apartments";
 import Login from "../layouts/Login/Login";
+import SignUp from "../layouts/SignUp/SignUp";
 
 const Router = createBrowserRouter([
     {
@@ -24,7 +25,11 @@ const Router = createBrowserRouter([
     {
         path: "/login",
         element: <Login></Login>,
-    }
+    },
+    {
+        path: "/sign-up",
+        element: <SignUp></SignUp>,
+    },
 ]);
 
 export default Router;
