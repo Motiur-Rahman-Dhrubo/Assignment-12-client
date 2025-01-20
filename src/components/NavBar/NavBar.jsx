@@ -1,14 +1,34 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { BsBuildingsFill } from "react-icons/bs";
-import { FaUser } from "react-icons/fa";
 import './nav.css'
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
+import { FaUser } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const NavBar = () => {
+
+    const { user, logOut } = useContext(AuthContext);
+
+    const navigate = useNavigate();
 
     const links = <>
         <li><NavLink className='py-0 px-0 w-min' to="/">Home</NavLink></li>
         <li><NavLink className='py-0 px-0 w-min' to="/apartments">Apartment</NavLink></li>
     </>
+
+    const handleLogout = () => {
+        logOut();
+        Swal.fire({
+            position: "top",
+            icon: "success",
+            title: "Log Out Successful",
+            showConfirmButton: false,
+            timer: 1500
+        });
+        setTimeout(() => navigate("/"), 1500);
+    }
+    
     return (
         <div className="sticky border-b top-0 z-50 bg-base-100">
             <div className="navbar w-11/12 mx-auto px-0">
@@ -30,7 +50,7 @@ const NavBar = () => {
                         </div>
                         <ul
                             tabIndex={0}
-                            className="menu menu-nav menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-3 shadow uppercase font-semibold text-black text-base gap-1">
+                            className="menu menu-nav menu-sm dropdown-content bg-base-100 z-[1] mt-3 w-52 p-3 border border-black uppercase font-semibold text-black text-base gap-1">
                             {links}
                         </ul>
                     </div>
@@ -42,7 +62,19 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <Link to='login' className="text-xl text-black font-semibold flex items-center gap-1 border border-black py-2 px-4 hover:bg-black hover:text-white transition-all duration-[300ms]"><FaUser />Login</Link>
+                    {
+                        user ?
+                            <div className="dropdown dropdown-end">
+                                <div tabIndex={0} role="button" className="">
+                                    <img src={user.photoURL} alt="user_photo" className="w-12 h-12 object-cover rounded-full border border-black" />
+                                </div>
+                                <ul tabIndex={0} className="dropdown-content menu bg-base-100 border border-black z-[1] w-52 p-2">
+                                    <li className="text-black font-semibold py-2 text-lg text-center">{user.displayName}</li>
+                                    <li><button onClick={handleLogout} className="text-black justify-center font-semibold rounded-none border border-black py-2 hover:bg-black hover:text-white transition-all duration-[300ms]">Log Out</button></li>
+                                </ul>
+                            </div> :
+                            <Link to='login' className="text-xl text-black font-semibold flex items-center gap-1 border border-black py-2 px-4 hover:bg-black hover:text-white transition-all duration-[300ms]"><FaUser />Login</Link>
+                    }
                 </div>
             </div>
         </div>

@@ -50,10 +50,10 @@ const Apartments = () => {
         <div className="w-11/12 mx-auto mt-2 md:mt-4">
             <div className="dropdown dropdown-end w-full flex justify-end">
                 <div tabIndex={0} role="button" className="text-black font-semibold border border-black py-2 px-4 hover:bg-black hover:text-white transition-all duration-[300ms]">Search By Rent</div>
-                <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
-                    <li><a onClick={() => handleFilterByRent("all")}>All</a></li>
-                    <li><a onClick={() => handleFilterByRent("1001-2000")}>1001-2000</a></li>
-                    <li><a onClick={() => handleFilterByRent("2001-3000")}>2001-3000</a></li>
+                <ul tabIndex={0} className="dropdown-content menu bg-base-100 border text-black border-black z-[1] w-52 p-2">
+                    <li><a onClick={() => handleFilterByRent("all")} className="justify-center font-semibold rounded-none hover:border border-black hover:py-[7px] py-2 hover:bg-black hover:text-white ">All</a></li>
+                    <li><a onClick={() => handleFilterByRent("1001-2000")} className="justify-center font-semibold rounded-none hover:border border-black hover:py-[7px] py-2 hover:bg-black hover:text-white ">1001-2000</a></li>
+                    <li><a onClick={() => handleFilterByRent("2001-3000")} className="justify-center font-semibold rounded-none hover:border border-black hover:py-[7px] py-2 hover:bg-black hover:text-white ">2001-3000</a></li>
                 </ul>
             </div>
             
