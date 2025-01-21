@@ -13,7 +13,7 @@ const SignUp = () => {
 
     const navigate = useNavigate();
 
-    const handleLogin = (e) => {
+    const handleSignUp = (e) => {
         e.preventDefault();
         const name = e.target.name.value;
         const nameCriteria = /^[A-Za-z\s]+$/;
@@ -72,7 +72,7 @@ const SignUp = () => {
         <div className="hero min-h-screen w-11/12 mx-auto">
             <div className="hero-content flex px-0 w-full">
                 <div className="card w-full md:w-1/2 max-w-sm shrink-0 shadow-2xl">
-                    <form className="card-body" onSubmit={handleLogin}>
+                    <form className="card-body" onSubmit={handleSignUp}>
 
                         {/* name */}
                         <div className="form-control">

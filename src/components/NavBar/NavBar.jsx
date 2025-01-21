@@ -70,7 +70,8 @@ const NavBar = () => {
                                 </div>
                                 <ul tabIndex={0} className="dropdown-content menu bg-base-100 border border-black z-[1] w-52 p-2">
                                     <li className="text-black font-semibold py-2 text-lg text-center">{user.displayName}</li>
-                                    <li><button onClick={handleLogout} className="text-black justify-center font-semibold rounded-none border border-black py-2 hover:bg-black hover:text-white transition-all duration-[300ms]">Log Out</button></li>
+                                    <li><button onClick={handleLogout} className="text-black justify-center font-semibold rounded-none hover:border border-black py-2 hover:py-[7px] hover:bg-black hover:text-white">Dashboard</button></li>
+                                    <li><button onClick={handleLogout} className="text-black justify-center font-semibold rounded-none hover:border border-black py-2 hover:py-[7px] hover:bg-black hover:text-white">Log Out</button></li>
                                 </ul>
                             </div> :
                             <Link to='login' className="text-xl text-black font-semibold flex items-center gap-1 border border-black py-2 px-4 hover:bg-black hover:text-white transition-all duration-[300ms]"><FaUser />Login</Link>
