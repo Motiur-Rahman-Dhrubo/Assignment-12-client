@@ -54,6 +54,7 @@ const SignUp = () => {
                         icon: "error",
                         title: err.message,
                     });
+                    navigate('/');
                 });
         })
         .catch((error) => {

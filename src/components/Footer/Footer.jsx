@@ -11,7 +11,7 @@ const Footer = () => {
                     <aside>
                         <Link to='/' className="flex text-4xl items-center font-bold"><BsBuildingsFill />M.tower</Link>
                         <p>
-                            77/B Kemal Ataturk Ave, Dhaka 1213, Bangladesh.
+                            77/C Motiur Tower, Dhaka 1213, Bangladesh.
                         </p>
                     </aside>
                     <nav>

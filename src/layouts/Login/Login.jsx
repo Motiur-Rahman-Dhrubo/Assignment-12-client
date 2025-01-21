@@ -1,6 +1,6 @@
 import Lottie from "lottie-react";
 import loginLottie from '../../../public/assets/login.json'
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
@@ -12,6 +12,10 @@ const Login = () => {
     const [error, setError] = useState({});
 
     const navigate = useNavigate();
+
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/';
 
 
     const handleGoogleSignOnClick = (e) => {
@@ -27,7 +31,7 @@ const Login = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
-                setTimeout(() => navigate("/"), 1500);
+                setTimeout(() => navigate(from, {replace: true}), 1500);
             })
             .catch((error) => {
                 Swal.fire({

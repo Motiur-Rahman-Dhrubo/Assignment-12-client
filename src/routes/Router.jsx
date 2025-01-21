@@ -5,6 +5,8 @@ import Home from "../layouts/Home/Home";
 import Apartments from "../layouts/Apartments/Apartments";
 import Login from "../layouts/Login/Login";
 import SignUp from "../layouts/SignUp/SignUp";
+import UserDashboard from "../layouts/UserDashboard/UserDashboard";
+import PrivateRoute from "./PrivateRoute";
 
 const Router = createBrowserRouter([
     {
@@ -19,6 +21,12 @@ const Router = createBrowserRouter([
             {
                 path: "/apartments",
                 element: <Apartments></Apartments>,
+            },
+            {
+                path: "/dashboard",
+                element: <PrivateRoute>
+                    <UserDashboard></UserDashboard>
+                </PrivateRoute>,
             },
         ],
     },

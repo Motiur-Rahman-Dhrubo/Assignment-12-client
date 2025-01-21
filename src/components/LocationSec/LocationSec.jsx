@@ -11,7 +11,7 @@ const LocationSec = () => {
                     Our Location
                 </h2>
                 <p className="text-sm md:text-base lg:text-lg md:mt-5 mt-3 text-center text-black">
-                    Visit us at <span className="text-indigo-600 font-semibold">77/B Kemal Ataturk Ave, Dhaka 1213, Bangladesh</span>.
+                    Visit us at <span className="text-indigo-600 font-semibold">77/C Motiur Tower, Dhaka 1213, Bangladesh</span>.
                     Here's how you can reach us.
                 </p>
             </div>
