@@ -1,8 +1,17 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Loading from "../../components/Loading/Loading";
+import { AuthContext } from "../../providers/AuthProvider";
+import { useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 
 const Apartments = () => {
+
+    const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const axiosSecure = useAxiosSecure();
 
     const [allApartments, setAllApartments] = useState([]);
     const [filteredApartments, setFilteredApartments] = useState([]);
@@ -46,6 +55,56 @@ const Apartments = () => {
         setCurrentPage(1);
     };
 
+    const handleAgreement = (RequestFlat) => {
+        if (user && user.email) {
+            Swal.fire({
+                title: "Are you sure?",
+                text: `You want to rent Apartment No: ${RequestFlat.apartment_no}.`,
+                icon: "question",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, proceed!",
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    const requestedFlat = {
+                        reqFlatID: RequestFlat._id,
+                        reqUserName: user.displayName,
+                        reqUserEmail: user.email,
+                        reqFlatFloor: RequestFlat.floor_no,
+                        reqFlatBlock: RequestFlat.block_name,
+                        reqFlat: RequestFlat.apartment_no,
+                        reqFlatRent: RequestFlat.rent,
+                    }
+
+                    axiosSecure.post('/requests', requestedFlat)
+                        .then(res => {
+                            console.log(res.data)
+                            if (res.data.insertedId) {
+                                Swal.fire({
+                                    title: "Request Sent!",
+                                    text: "Your request has been sent. Please wait for admin approval.",
+                                    icon: "success",
+                                });
+                            }
+                        })
+                }
+            });
+        }
+        else {
+            Swal.fire({
+                position: "top",
+                icon: "error",
+                title: "You are not logged in!",
+                text: "Please log in first.",
+                confirmButtonText: "Go to Login",
+            }).then(() => {
+                navigate("/login", { state: { from: location }, replace: true });
+            });
+        }
+    }
+
     return (
         <div className="w-11/12 mx-auto mt-2 md:mt-4">
             <div className="dropdown dropdown-end w-full flex justify-end">
@@ -56,7 +115,7 @@ const Apartments = () => {
                     <li><a onClick={() => handleFilterByRent("2001-3000")} className="justify-center font-semibold rounded-none hover:border border-black hover:py-[7px] py-2 hover:bg-black hover:text-white ">2001-3000</a></li>
                 </ul>
             </div>
-            
+
             <div className="mt-2 md:mt-4 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
                 {paginatedApartments.map((apartment) => (
                     <div key={apartment._id} className="border group">
@@ -72,7 +131,7 @@ const Apartments = () => {
                             <p className={apartment.availability === "unavailable" ? "text-red-500" : ""}>
                                 <span className="font-semibold">Status:</span> {apartment.availability === "available" ? "Available" : "Unavailable"}
                             </p>
-                            <button className={`w-full text-center font-semibold border py-1 mt-2 transition-all duration-300 ${apartment.availability === "unavailable" ? "bg-red-200 text-gray-500" : "text-black border-black hover:bg-black hover:text-white"}`} disabled={apartment.availability === "unavailable"}>Agreement</button>
+                            <button onClick={() => handleAgreement(apartment)} className={`w-full text-center font-semibold border py-1 mt-2 transition-all duration-300 ${apartment.availability === "unavailable" ? "bg-red-200 text-gray-500" : "text-black border-black hover:bg-black hover:text-white"}`} disabled={apartment.availability === "unavailable"}>Agreement</button>
                         </div>
                     </div>
                 ))}
