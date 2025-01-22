@@ -4,6 +4,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useRequest from "../../hooks/useRequest";
 
 
 const Apartments = () => {
@@ -12,6 +13,7 @@ const Apartments = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const axiosSecure = useAxiosSecure();
+    const [request, refetch] = useRequest();
 
     const [allApartments, setAllApartments] = useState([]);
     const [filteredApartments, setFilteredApartments] = useState([]);
@@ -57,40 +59,51 @@ const Apartments = () => {
 
     const handleAgreement = (RequestFlat) => {
         if (user && user.email) {
-            Swal.fire({
-                title: "Are you sure?",
-                text: `You want to rent Apartment No: ${RequestFlat.apartment_no}.`,
-                icon: "question",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, proceed!",
-            }).then((result) => {
-                if (result.isConfirmed) {
+            if (request.length > 0){
+                return Swal.fire({
+                    position: "top",
+                    icon: "error",
+                    title: "One user will be able to apply for only one Apartment!",
+                    confirmButtonText: "Ok",
+                })
+            }
+            else{
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: `You Want to Rent Apartment No: ${RequestFlat.apartment_no}.`,
+                    icon: "question",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, proceed!",
+                }).then((result) => {
+                    if (result.isConfirmed) {
 
-                    const requestedFlat = {
-                        reqFlatID: RequestFlat._id,
-                        reqUserName: user.displayName,
-                        reqUserEmail: user.email,
-                        reqFlatFloor: RequestFlat.floor_no,
-                        reqFlatBlock: RequestFlat.block_name,
-                        reqFlat: RequestFlat.apartment_no,
-                        reqFlatRent: RequestFlat.rent,
+                        const requestedFlat = {
+                            reqFlatID: RequestFlat._id,
+                            reqUserName: user.displayName,
+                            reqUserEmail: user.email,
+                            reqFlatFloor: RequestFlat.floor_no,
+                            reqFlatBlock: RequestFlat.block_name,
+                            reqFlat: RequestFlat.apartment_no,
+                            reqFlatRent: RequestFlat.rent,
+                        }
+
+                        axiosSecure.post('/requests', requestedFlat)
+                            .then(res => {
+                                console.log(res.data)
+                                if (res.data.insertedId) {
+                                    Swal.fire({
+                                        title: "Request Sent!",
+                                        text: "Your request has been sent. Please wait for admin approval.",
+                                        icon: "success",
+                                    });
+                                    refetch();
+                                }
+                            })
                     }
-
-                    axiosSecure.post('/requests', requestedFlat)
-                        .then(res => {
-                            console.log(res.data)
-                            if (res.data.insertedId) {
-                                Swal.fire({
-                                    title: "Request Sent!",
-                                    text: "Your request has been sent. Please wait for admin approval.",
-                                    icon: "success",
-                                });
-                            }
-                        })
-                }
-            });
+                });
+            }
         }
         else {
             Swal.fire({
