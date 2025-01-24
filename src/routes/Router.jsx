@@ -7,6 +7,9 @@ import Login from "../layouts/Login/Login";
 import SignUp from "../layouts/SignUp/SignUp";
 import UserDashboard from "../layouts/UserDashboard/UserDashboard";
 import PrivateRoute from "./PrivateRoute";
+import AdminDashboard from "../layouts/AdminDashboard/AdminDashboard";
+import Admina from "../layouts/AdminDashboard/Admina";
+import Adminb from "../layouts/AdminDashboard/Adminb";
 
 const Router = createBrowserRouter([
     {
@@ -22,12 +25,6 @@ const Router = createBrowserRouter([
                 path: "/apartments",
                 element: <Apartments></Apartments>,
             },
-            {
-                path: "/dashboard",
-                element: <PrivateRoute>
-                    <UserDashboard></UserDashboard>
-                </PrivateRoute>,
-            },
         ],
     },
     {
@@ -37,6 +34,22 @@ const Router = createBrowserRouter([
     {
         path: "/sign-up",
         element: <SignUp></SignUp>,
+    },
+    {
+        path: "/dashboard",
+        element: <PrivateRoute>
+            <AdminDashboard></AdminDashboard>,
+        </PrivateRoute>,
+        children: [
+            {
+                path: "/dashboard",
+                element: <Admina></Admina>,
+            },
+            {
+                path: "/dashboard/b",
+                element: <Adminb></Adminb>,
+            },
+        ],
     },
 ]);
 

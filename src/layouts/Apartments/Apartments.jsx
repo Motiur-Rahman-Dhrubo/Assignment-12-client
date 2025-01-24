@@ -87,6 +87,7 @@ const Apartments = () => {
                             reqFlatBlock: RequestFlat.block_name,
                             reqFlat: RequestFlat.apartment_no,
                             reqFlatRent: RequestFlat.rent,
+                            reqStatus: "pending",
                         }
 
                         axiosSecure.post('/requests', requestedFlat)
@@ -119,7 +120,7 @@ const Apartments = () => {
     }
 
     return (
-        <div className="w-11/12 mx-auto mt-2 md:mt-4">
+        <div className="w-11/12 mx-auto mt-2 md:mt-4 mb-8 md:mb-12">
             <div className="dropdown dropdown-end w-full flex justify-end">
                 <div tabIndex={0} role="button" className="text-black font-semibold border border-black py-2 px-4 hover:bg-black hover:text-white transition-all duration-[300ms]">Search By Rent</div>
                 <ul tabIndex={0} className="dropdown-content menu bg-base-100 border text-black border-black z-[1] w-52 p-2">

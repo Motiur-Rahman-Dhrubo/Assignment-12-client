@@ -4,8 +4,11 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const Login = () => {
+
+    const axiosPublic = useAxiosPublic();
 
     const { userLogin, setUser, handleGoogleSignUp, setLoading } = useContext(AuthContext);
 
@@ -24,6 +27,12 @@ const Login = () => {
             .then((result) => {
                 const user = result.user;
                 setUser(user);
+                const userInfo = {
+                    userName: user.displayName,
+                    userEmail: user.email,
+                    userRole: "user",
+                }
+                axiosPublic.post('/users', userInfo)
                 Swal.fire({
                     position: "top",
                     icon: "success",

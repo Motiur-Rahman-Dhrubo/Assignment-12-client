@@ -4,8 +4,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const SignUp = () => {
+
+    const axiosPublic = useAxiosPublic();
 
     const { createNewUser, setUser, updateUserProfile } = useContext(AuthContext);
 
@@ -46,15 +49,41 @@ const SignUp = () => {
             });
             updateUserProfile({ displayName: name, photoURL: photo })
                 .then(() => {
-                    setTimeout(() => navigate("/"), 1500);
+                    //save user data in database
+                    const userInfo = {
+                        userName: name,
+                        userEmail: email,
+                        userRole: "user",
+                    }
+                    axiosPublic.post('/users', userInfo)
+                    .then(res => {
+                        if (res.data.insertedId) {
+                            setTimeout(() => navigate("/"), 1500);
+                        }
+                    })
                 })
                 .catch((err) => {
-                    Swal.fire({
-                        position: "top",
-                        icon: "error",
-                        title: err.message,
-                    });
-                    navigate('/');
+                    //save user data in database
+                    const userInfo = {
+                        userName: name,
+                        userEmail: email,
+                        userRole: "user",
+                    }
+                    axiosPublic.post('/users', userInfo)
+                    updateUserProfile({displayName: name})
+                        .then(res => {
+                            if (res.data.insertedId) {
+                                setTimeout(() => navigate("/"), 1500);
+                            }
+                        })
+                    setTimeout(() => {
+                        Swal.fire({
+                            position: "top",
+                            icon: "error",
+                            title: err.message,
+                        });
+                        navigate('/');
+                    }, 1500);
                 });
         })
         .catch((error) => {
