@@ -10,6 +10,7 @@ import PrivateRoute from "./PrivateRoute";
 import AdminDashboard from "../layouts/AdminDashboard/AdminDashboard";
 import Admina from "../layouts/AdminDashboard/Admina";
 import Adminb from "../layouts/AdminDashboard/Adminb";
+import MemberDashboard from "../layouts/MemberDashboard/MemberDashboard";
 
 const Router = createBrowserRouter([
     {
@@ -36,17 +37,29 @@ const Router = createBrowserRouter([
         element: <SignUp></SignUp>,
     },
     {
-        path: "/dashboard",
+        path: "/user-dashboard",
+        element: <PrivateRoute>
+            <UserDashboard></UserDashboard>,
+        </PrivateRoute>,
+    },
+    {
+        path: "/member-dashboard",
+        element: <PrivateRoute>
+            <MemberDashboard></MemberDashboard>,
+        </PrivateRoute>,
+    },
+    {
+        path: "/admin-dashboard",
         element: <PrivateRoute>
             <AdminDashboard></AdminDashboard>,
         </PrivateRoute>,
         children: [
             {
-                path: "/dashboard",
+                path: "/admin-dashboard",
                 element: <Admina></Admina>,
             },
             {
-                path: "/dashboard/b",
+                path: "/admin-dashboard/b",
                 element: <Adminb></Adminb>,
             },
         ],
