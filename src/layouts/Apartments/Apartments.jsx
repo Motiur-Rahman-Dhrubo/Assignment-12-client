@@ -88,6 +88,7 @@ const Apartments = () => {
                             reqFlat: RequestFlat.apartment_no,
                             reqFlatRent: RequestFlat.rent,
                             reqStatus: "pending",
+                            agreementAcceptDate: null,                            
                         }
 
                         axiosSecure.post('/requests', requestedFlat)

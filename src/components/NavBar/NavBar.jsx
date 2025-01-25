@@ -69,7 +69,7 @@ const NavBar = () => {
                         user ?
                             <div className="dropdown dropdown-end">
                                 <div tabIndex={0} role="button" className="">
-                                    <img src={user.photoURL} alt="user_photo" className="w-12 h-12 object-cover rounded-full border border-black" />
+                                    <img src={user.photoURL ? user.photoURL : "/assets/user.png"} alt="user_photo" className="w-12 h-12 object-cover rounded-full border border-black" />
                                 </div>
                                 <ul tabIndex={0} className="dropdown-content menu bg-base-100 border border-black z-[1] w-52 p-2">
                                     <li className="text-black font-semibold py-2 text-lg text-center">{user.displayName}</li>

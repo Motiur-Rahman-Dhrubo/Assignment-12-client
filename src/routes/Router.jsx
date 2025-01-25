@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 import App from "../App";
 import ErrorPage from "../layouts/ErrorPage/ErrorPage";
 import Home from "../layouts/Home/Home";
@@ -11,6 +11,7 @@ import AdminDashboard from "../layouts/AdminDashboard/AdminDashboard";
 import Admina from "../layouts/AdminDashboard/Admina";
 import Adminb from "../layouts/AdminDashboard/Adminb";
 import MemberDashboard from "../layouts/MemberDashboard/MemberDashboard";
+import UserProfile from "../layouts/UserDashboard/UserProfile";
 
 const Router = createBrowserRouter([
     {
@@ -37,10 +38,24 @@ const Router = createBrowserRouter([
         element: <SignUp></SignUp>,
     },
     {
-        path: "/user-dashboard",
+        path: "/user-dashboard/",
         element: <PrivateRoute>
             <UserDashboard></UserDashboard>,
         </PrivateRoute>,
+        children: [
+            {
+                path: "/user-dashboard/",
+                element: <Navigate to="/user-dashboard/profile"></Navigate>,
+            },
+            {
+                path: "/user-dashboard/profile",
+                element: <UserProfile></UserProfile>,
+            },
+            {
+                path: "/user-dashboard/announcements",
+                element: <Adminb></Adminb>,
+            },
+        ],
     },
     {
         path: "/member-dashboard",
