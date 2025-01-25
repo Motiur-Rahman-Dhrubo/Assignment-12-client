@@ -12,6 +12,8 @@ import Admina from "../layouts/AdminDashboard/Admina";
 import Adminb from "../layouts/AdminDashboard/Adminb";
 import MemberDashboard from "../layouts/MemberDashboard/MemberDashboard";
 import UserProfile from "../layouts/UserDashboard/UserProfile";
+import Announcements from "../components/Announcements/Announcements";
+import MemberProfile from "../layouts/MemberDashboard/MemberProfile";
 
 const Router = createBrowserRouter([
     {
@@ -53,7 +55,7 @@ const Router = createBrowserRouter([
             },
             {
                 path: "/user-dashboard/announcements",
-                element: <Adminb></Adminb>,
+                element: <Announcements></Announcements>,
             },
         ],
     },
@@ -62,6 +64,20 @@ const Router = createBrowserRouter([
         element: <PrivateRoute>
             <MemberDashboard></MemberDashboard>,
         </PrivateRoute>,
+        children: [
+            {
+                path: "/member-dashboard/",
+                element: <Navigate to="/member-dashboard/profile"></Navigate>,
+            },
+            {
+                path: "/member-dashboard/profile",
+                element: <MemberProfile></MemberProfile>,
+            },
+            {
+                path: "/member-dashboard/announcements",
+                element: <Announcements></Announcements>,
+            },
+        ],
     },
     {
         path: "/admin-dashboard",

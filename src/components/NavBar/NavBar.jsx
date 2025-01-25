@@ -11,7 +11,6 @@ const NavBar = () => {
 
     const { user, logOut } = useContext(AuthContext);
     const [ userInfo ] = useUser();
-    console.log(userInfo[0]?.userRole);
 
     const navigate = useNavigate();
 
