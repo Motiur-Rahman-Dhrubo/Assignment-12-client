@@ -8,12 +8,11 @@ import SignUp from "../layouts/SignUp/SignUp";
 import UserDashboard from "../layouts/UserDashboard/UserDashboard";
 import PrivateRoute from "./PrivateRoute";
 import AdminDashboard from "../layouts/AdminDashboard/AdminDashboard";
-import Admina from "../layouts/AdminDashboard/Admina";
-import Adminb from "../layouts/AdminDashboard/Adminb";
 import MemberDashboard from "../layouts/MemberDashboard/MemberDashboard";
 import UserProfile from "../layouts/UserDashboard/UserProfile";
 import Announcements from "../components/Announcements/Announcements";
 import MemberProfile from "../layouts/MemberDashboard/MemberProfile";
+import AdminProfile from "../layouts/AdminDashboard/AdminProfile";
 
 const Router = createBrowserRouter([
     {
@@ -86,12 +85,16 @@ const Router = createBrowserRouter([
         </PrivateRoute>,
         children: [
             {
-                path: "/admin-dashboard",
-                element: <Admina></Admina>,
+                path: "/admin-dashboard/",
+                element: <Navigate to="/admin-dashboard/profile"></Navigate>,
             },
             {
-                path: "/admin-dashboard/b",
-                element: <Adminb></Adminb>,
+                path: "/admin-dashboard/profile",
+                element: <AdminProfile></AdminProfile>,
+            },
+            {
+                path: "/admin-dashboard/announcements",
+                element: <Announcements></Announcements>,
             },
         ],
     },
