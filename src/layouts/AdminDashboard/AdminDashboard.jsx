@@ -16,11 +16,11 @@ const AdminDashboard = () => {
                 <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
                 <ul className="menu bg-black text-white min-h-full lg:w-80 w-60 p-4">
                     {/* Sidebar content here */}
-                    <li><NavLink to='/user-dashboard/profile' className="hover:bg-white hover:text-black rounded-none">My Profile</NavLink></li>
-                    <li><NavLink to='/user-dashboard/announcements' className="hover:bg-white hover:text-black rounded-none">Manage Members</NavLink></li>
-                    <li><NavLink to='/user-dashboard/profile' className="hover:bg-white hover:text-black rounded-none">Make Announcement</NavLink></li>
-                    <li><NavLink to='/user-dashboard/announcements' className="hover:bg-white hover:text-black rounded-none">Agreement Requests</NavLink></li>
-                    <li><NavLink to='/user-dashboard/announcements' className="hover:bg-white hover:text-black rounded-none">Manage Coupons</NavLink></li>
+                    <li><NavLink to='/admin-dashboard/profile' className="hover:bg-white hover:text-black rounded-none">My Profile</NavLink></li>
+                    <li><NavLink to='/admin-dashboard/manage-members' className="hover:bg-white hover:text-black rounded-none">Manage Members</NavLink></li>
+                    <li><NavLink to='/admin-dashboard/profile' className="hover:bg-white hover:text-black rounded-none">Make Announcement</NavLink></li>
+                    <li><NavLink to='/admin-dashboard/announcements' className="hover:bg-white hover:text-black rounded-none">Agreement Requests</NavLink></li>
+                    <li><NavLink to='/admin-dashboard/announcements' className="hover:bg-white hover:text-black rounded-none">Manage Coupons</NavLink></li>
 
                     <div className="divider divider-neutral">Pages</div>
 

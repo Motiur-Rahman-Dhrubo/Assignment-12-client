@@ -13,6 +13,7 @@ import UserProfile from "../layouts/UserDashboard/UserProfile";
 import Announcements from "../components/Announcements/Announcements";
 import MemberProfile from "../layouts/MemberDashboard/MemberProfile";
 import AdminProfile from "../layouts/AdminDashboard/AdminProfile";
+import ManageMembers from "../layouts/AdminDashboard/ManageMembers";
 
 const Router = createBrowserRouter([
     {
@@ -93,8 +94,8 @@ const Router = createBrowserRouter([
                 element: <AdminProfile></AdminProfile>,
             },
             {
-                path: "/admin-dashboard/announcements",
-                element: <Announcements></Announcements>,
+                path: "/admin-dashboard/manage-members",
+                element: <ManageMembers></ManageMembers>,
             },
         ],
     },

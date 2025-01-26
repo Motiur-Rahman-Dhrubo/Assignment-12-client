@@ -12,7 +12,6 @@ const AdminProfile = () => {
 
     const availableRooms = apartment.filter((room) => room.availability === "available");
     const unavailableRooms = apartment.filter((room) => room.availability === "unavailable");
-    console.log(availableRooms, unavailableRooms)
     const PercentageOfAvailableRooms = ((availableRooms?.length / apartment?.length) * 100).toFixed(2);
     const PercentageOfUnavailableRooms = ((unavailableRooms?.length / apartment?.length) * 100).toFixed(2);
     
