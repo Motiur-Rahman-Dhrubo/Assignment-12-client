@@ -5,6 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useRequest from "../../hooks/useRequest";
+import useApartment from "../../hooks/UseApartment";
 
 
 const Apartments = () => {
@@ -15,6 +16,7 @@ const Apartments = () => {
     const axiosSecure = useAxiosSecure();
     const [request, refetch] = useRequest();
 
+    const [apartment] = useApartment();
     const [allApartments, setAllApartments] = useState([]);
     const [filteredApartments, setFilteredApartments] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -22,14 +24,10 @@ const Apartments = () => {
     const itemsPerPage = 6;
 
     useEffect(() => {
-        fetch('http://localhost:5000/apartments')
-            .then(res => res.json())
-            .then(data => {
-                setAllApartments(data);
-                setFilteredApartments(data);
-                setLoading(false);
-            });
-    }, []);
+        setAllApartments(apartment);
+        setFilteredApartments(apartment);
+        setLoading(false);
+    }, [apartment]);
 
     if (loading) {
         return <Loading></Loading>;
@@ -93,7 +91,6 @@ const Apartments = () => {
 
                         axiosSecure.post('/requests', requestedFlat)
                             .then(res => {
-                                console.log(res.data)
                                 if (res.data.insertedId) {
                                     Swal.fire({
                                         title: "Request Sent!",

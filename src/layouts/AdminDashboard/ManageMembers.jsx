@@ -11,7 +11,7 @@ const ManageMembers = () => {
     return (
         <div className="w-11/12 mx-auto mt-2 md:mt-5">
             <div className="overflow-x-auto">
-                <table className="table">
+                <table className="table min-w-[650px]">
                     {/* head */}
                     <thead>
                         <tr>

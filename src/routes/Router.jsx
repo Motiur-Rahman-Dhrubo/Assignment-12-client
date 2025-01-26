@@ -14,6 +14,7 @@ import Announcements from "../components/Announcements/Announcements";
 import MemberProfile from "../layouts/MemberDashboard/MemberProfile";
 import AdminProfile from "../layouts/AdminDashboard/AdminProfile";
 import ManageMembers from "../layouts/AdminDashboard/ManageMembers";
+import MakeAnnouncement from "../layouts/AdminDashboard/MakeAnnouncement";
 
 const Router = createBrowserRouter([
     {
@@ -96,6 +97,10 @@ const Router = createBrowserRouter([
             {
                 path: "/admin-dashboard/manage-members",
                 element: <ManageMembers></ManageMembers>,
+            },
+            {
+                path: "/admin-dashboard/make-announcement",
+                element: <MakeAnnouncement></MakeAnnouncement>,
             },
         ],
     },
