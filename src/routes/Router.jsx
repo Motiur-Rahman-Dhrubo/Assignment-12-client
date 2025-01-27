@@ -16,6 +16,7 @@ import AdminProfile from "../layouts/AdminDashboard/AdminProfile";
 import ManageMembers from "../layouts/AdminDashboard/ManageMembers";
 import MakeAnnouncement from "../layouts/AdminDashboard/MakeAnnouncement";
 import AgreementRequests from "../layouts/AdminDashboard/AgreementRequests";
+import ManageCoupons from "../layouts/AdminDashboard/ManageCoupons";
 
 const Router = createBrowserRouter([
     {
@@ -106,6 +107,10 @@ const Router = createBrowserRouter([
             {
                 path: "/admin-dashboard/agreement-requests",
                 element: <AgreementRequests></AgreementRequests>,
+            },
+            {
+                path: "/admin-dashboard/manage-coupons",
+                element: <ManageCoupons></ManageCoupons>,
             },
         ],
     },
