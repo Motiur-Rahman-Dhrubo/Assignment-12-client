@@ -19,7 +19,7 @@ const AdminDashboard = () => {
                     <li><NavLink to='/admin-dashboard/profile' className="hover:bg-white hover:text-black rounded-none">My Profile</NavLink></li>
                     <li><NavLink to='/admin-dashboard/manage-members' className="hover:bg-white hover:text-black rounded-none">Manage Members</NavLink></li>
                     <li><NavLink to='/admin-dashboard/make-announcement' className="hover:bg-white hover:text-black rounded-none">Make Announcement</NavLink></li>
-                    <li><NavLink to='/admin-dashboard/announcements' className="hover:bg-white hover:text-black rounded-none">Agreement Requests</NavLink></li>
+                    <li><NavLink to='/admin-dashboard/agreement-requests' className="hover:bg-white hover:text-black rounded-none">Agreement Requests</NavLink></li>
                     <li><NavLink to='/admin-dashboard/announcements' className="hover:bg-white hover:text-black rounded-none">Manage Coupons</NavLink></li>
 
                     <div className="divider divider-neutral">Pages</div>

@@ -77,6 +77,13 @@ const Apartments = () => {
                 }).then((result) => {
                     if (result.isConfirmed) {
 
+                        const now = new Date();
+                        const requestDate = now.toLocaleString("en-GB", {
+                            day: "2-digit",
+                            month: "short",
+                            year: "numeric",
+                        }).replace(",", "");
+
                         const requestedFlat = {
                             reqFlatID: RequestFlat._id,
                             reqUserName: user.displayName,
@@ -86,7 +93,8 @@ const Apartments = () => {
                             reqFlat: RequestFlat.apartment_no,
                             reqFlatRent: RequestFlat.rent,
                             reqStatus: "pending",
-                            agreementAcceptDate: null,                            
+                            agreementRequestDate: requestDate,
+                            agreementAcceptDate: null,                          
                         }
 
                         axiosSecure.post('/requests', requestedFlat)
