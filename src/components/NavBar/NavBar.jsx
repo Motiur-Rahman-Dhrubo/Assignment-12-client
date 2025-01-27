@@ -5,12 +5,14 @@ import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { FaUser } from "react-icons/fa";
 import Swal from "sweetalert2";
-import useUser from "../../hooks/useUser";
+import useAdmin from "../../hooks/useAdmin";
+import useMember from "../../hooks/useMember";
 
 const NavBar = () => {
 
     const { user, logOut } = useContext(AuthContext);
-    const [ userInfo ] = useUser();
+    const [isAdmin] = useAdmin();
+    const [isMember] = useMember();
 
     const navigate = useNavigate();
 
@@ -74,7 +76,7 @@ const NavBar = () => {
                                     <li className="text-black font-semibold py-2 text-lg text-center">{user.displayName}</li>
 
 
-                                    <li><Link to={ userInfo[0]?.userRole === "user" ? "/user-dashboard" : userInfo[0]?.userRole === "admin" ? "/admin-dashboard" : userInfo[0]?.userRole === "member" ? "/member-dashboard" : "/" } className="text-black justify-center font-semibold rounded-none hover:border border-black py-2 hover:py-[7px] hover:bg-black hover:text-white">Dashboard</Link></li>
+                                    <li><Link to={isAdmin ? "/admin-dashboard" : isMember ? "/member-dashboard" : "/user-dashboard" } className="text-black justify-center font-semibold rounded-none hover:border border-black py-2 hover:py-[7px] hover:bg-black hover:text-white">Dashboard</Link></li>
 
 
                                     <li><button onClick={handleLogout} className="text-black justify-center font-semibold rounded-none hover:border border-black py-2 hover:py-[7px] hover:bg-black hover:text-white">Log Out</button></li>

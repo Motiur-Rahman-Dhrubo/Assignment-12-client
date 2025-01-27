@@ -4,11 +4,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const SignUp = () => {
 
-    const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
 
     const { createNewUser, setUser, updateUserProfile } = useContext(AuthContext);
 
@@ -55,7 +55,7 @@ const SignUp = () => {
                         userEmail: email,
                         userRole: "user",
                     }
-                    axiosPublic.post('/users', userInfo)
+                    axiosSecure.post('/users', userInfo)
                     .then(res => {
                         if (res.data.insertedId) {
                             setTimeout(() => navigate("/"), 1500);
@@ -69,7 +69,7 @@ const SignUp = () => {
                         userEmail: email,
                         userRole: "user",
                     }
-                    axiosPublic.post('/users', userInfo)
+                    axiosSecure.post('/users', userInfo)
                     updateUserProfile({displayName: name})
                         .then(res => {
                             if (res.data.insertedId) {

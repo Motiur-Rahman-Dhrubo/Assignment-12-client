@@ -24,9 +24,11 @@ const Apartments = () => {
     const itemsPerPage = 6;
 
     useEffect(() => {
-        setAllApartments(apartment);
-        setFilteredApartments(apartment);
-        setLoading(false);
+        if (apartment.length > 0) {
+            setAllApartments(apartment);
+            setFilteredApartments(apartment);
+            setLoading(false);
+        }
     }, [apartment]);
 
     if (loading) {
