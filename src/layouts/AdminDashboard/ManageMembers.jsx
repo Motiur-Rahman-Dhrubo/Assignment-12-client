@@ -24,7 +24,7 @@ const ManageMembers = () => {
                     <tbody>
                         {
                             allMember.map((member, index) => (
-                                <tr key={member._id}>
+                                <tr key={member._id} className="hover">
                                     <th>{index + 1}</th>
                                     <td>{member.userName}</td>
                                     <td>{member.userEmail}</td>

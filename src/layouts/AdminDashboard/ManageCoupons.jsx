@@ -1,7 +1,10 @@
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useAllCoupon from "../../hooks/useAllCoupon";
 
 const ManageCoupons = () => {
+
+    const [allCoupons, refetch] = useAllCoupon();
 
     const axiosSecure = useAxiosSecure();
 
@@ -61,7 +64,36 @@ const ManageCoupons = () => {
 
     return (
         <div className="w-11/12 mx-auto mt-2 md:mt-5">
-            <div className="flex justify-center"><button onClick={addCoupon} className="btn btn-primary">Add Coupon</button></div>
+            <div className="overflow-x-auto">
+                <table className="table min-w-[650px]">
+                    {/* head */}
+                    <thead>
+                        <tr>
+                            <th>Coupon Code</th>
+                            <th>Discount Percentage</th>
+                            <th>Coupon Description</th>
+                            <th>Availability</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            allCoupons.map((coupon) => (
+                                <tr key={coupon._id} className="hover">
+                                    <td>{coupon.couponCode}</td>
+                                    <td>{coupon.discountPercentage}</td>
+                                    <td>{coupon.couponDescription}</td>
+                                    <td>{coupon.availability}</td>
+                                    <td><button
+                                    //  onClick={() => { handleDelete(member) }} 
+                                     className="btn btn-xs btn-error">Delete</button></td>
+                                </tr>
+                            ))
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div className="flex mt-4 justify-center"><button onClick={addCoupon} className="btn btn-primary">Add Coupon</button></div>
         </div>
     );
 };
