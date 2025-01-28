@@ -55,18 +55,31 @@ const ManageCoupons = () => {
                                 `,
                                 icon: "success"
                             });
+                            refetch();
                         }
                     })
             }
         });
     };
 
+    const handleAvailability = async (coupon) => {
+        const newAvailability = coupon.availability === "available" ? "unavailable" : "available";
+        const updateCoupon = { action: newAvailability }
+        const couponRes = await axiosSecure.patch(`/coupon/${coupon._id}`, updateCoupon)
+        if (couponRes.data.modifiedCount > 0) {
+            Swal.fire({
+                title: `Coupon ${newAvailability === "available" ? "Enabled" : "Disabled"}!`,
+                text: `The coupon has been successfully updated to ${newAvailability}.`,
+                icon: "success"
+            });
+            refetch();
+        }
+    };
 
     return (
         <div className="w-11/12 mx-auto mt-2 md:mt-5">
             <div className="overflow-x-auto">
                 <table className="table min-w-[650px]">
-                    {/* head */}
                     <thead>
                         <tr>
                             <th>Coupon Code</th>
@@ -83,10 +96,8 @@ const ManageCoupons = () => {
                                     <td>{coupon.couponCode}</td>
                                     <td>{coupon.discountPercentage}</td>
                                     <td>{coupon.couponDescription}</td>
-                                    <td>{coupon.availability}</td>
-                                    <td><button
-                                    //  onClick={() => { handleDelete(member) }} 
-                                     className="btn btn-xs btn-error">Delete</button></td>
+                                    <td className={coupon.availability === 'available' ? "text-green-500" : "text-red-500"}>{coupon.availability}</td>
+                                    <td><button onClick={() => { handleAvailability(coupon) }} className={coupon.availability === 'available' ? "btn btn-xs btn-error" : "btn btn-xs btn-success"}>{coupon.availability === 'available' ? "Disable" : "Enable"}</button></td>
                                 </tr>
                             ))
                         }
