@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 
 const axiosSecure = axios.create({
-    baseURL: 'http://localhost:5000'
+    baseURL: 'https://m-tower-server.vercel.app'
 })
 const useAxiosSecure = () => {
     const { logOut } = useContext(AuthContext);
@@ -18,7 +18,7 @@ const useAxiosSecure = () => {
         return Promise.reject(error);
     });
 
-    axiosSecure.interceptors.response.use(function(response) {
+    axiosSecure.interceptors.response.use(function (response) {
         return response;
     }, async (error) => {
         const status = error.response.status;

@@ -11,7 +11,7 @@ const AdminProfile = () => {
     const [allUser] = useAllUser();
 
     const availableRooms = apartment.filter((room) => room.availability === "available");
-    const unavailableRooms = apartment.filter((room) => room.availability === "unavailable");
+    const unavailableRooms = apartment.filter((room) => room.availability === "unavailable" || room.availability === "rented");
     const PercentageOfAvailableRooms = ((availableRooms?.length / apartment?.length) * 100).toFixed(2);
     const PercentageOfUnavailableRooms = ((unavailableRooms?.length / apartment?.length) * 100).toFixed(2);
     
@@ -37,7 +37,7 @@ const AdminProfile = () => {
                 <div className="divider divider-neutral"></div>
     
                 <h2 className="md:text-xl text-sm"><span className="font-semibold">Percentage of available rooms:</span>  <span>{PercentageOfAvailableRooms}%</span></h2>
-                <h2 className="md:text-xl mt-2 text-sm"><span className="font-semibold">Percentage of unavailable rooms:</span>  <span>{PercentageOfUnavailableRooms}%</span></h2>
+                <h2 className="md:text-xl mt-2 text-sm"><span className="font-semibold">Percentage of unavailable / rented rooms:</span>  <span>{PercentageOfUnavailableRooms}%</span></h2>
             </div>
         );
 };

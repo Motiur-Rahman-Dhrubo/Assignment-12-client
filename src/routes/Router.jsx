@@ -19,6 +19,8 @@ import AgreementRequests from "../layouts/AdminDashboard/AgreementRequests";
 import ManageCoupons from "../layouts/AdminDashboard/ManageCoupons";
 import AdminRoute from "./AdminRoute";
 import MemberRoute from "./MemberRoute";
+import MakePayment from "../layouts/MemberDashboard/MakePayment";
+import Payment from "../layouts/MemberDashboard/Payment";
 
 const Router = createBrowserRouter([
     {
@@ -81,6 +83,14 @@ const Router = createBrowserRouter([
             {
                 path: "/member-dashboard/announcements",
                 element: <Announcements></Announcements>,
+            },
+            {
+                path: "/member-dashboard/make-payment",
+                element: <MakePayment></MakePayment>,
+            },
+            {
+                path: "/member-dashboard/payment",
+                element: <Payment></Payment>,
             },
         ],
     },

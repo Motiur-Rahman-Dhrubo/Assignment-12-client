@@ -28,7 +28,7 @@ const MemberProfile = () => {
                 <h2 className="md:text-xl mt-2 text-sm"><span className="font-semibold">Block Name:</span>  <span>{request[0]?.reqFlatBlock}</span></h2>
                 <h2 className="md:text-xl mt-2 text-sm"><span className="font-semibold">Room No:</span>  <span>{request[0]?.reqFlat}</span></h2>
                 <h2 className="md:text-xl mt-2 text-sm"><span className="font-semibold">Monthly Rent:</span>  <span>{request[0]?.reqFlatRent}৳</span></h2>
-                <h2 className="md:text-xl mt-2 text-sm"><span className="font-semibold">Request Status:</span>  <span>{request[0]?.reqStatus}৳</span></h2>
+                <h2 className="md:text-xl mt-2 text-sm"><span className="font-semibold">Request Status:</span>  <span>{request[0]?.reqStatus}</span></h2>
             </div>
         );
 };

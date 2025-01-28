@@ -6,6 +6,9 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useRequest from "../../hooks/useRequest";
 import useApartment from "../../hooks/UseApartment";
+import useAdmin from "../../hooks/useAdmin";
+import useMember from "../../hooks/useMember";
+import useMyInfo from "../../hooks/useMyInfo";
 
 
 const Apartments = () => {
@@ -15,6 +18,9 @@ const Apartments = () => {
     const location = useLocation();
     const axiosSecure = useAxiosSecure();
     const [request, refetch] = useRequest();
+    const [isAdmin] = useAdmin();
+    const [isMember] = useMember();
+    const [myInfo] = useMyInfo();
 
     const [apartment] = useApartment();
     const [allApartments, setAllApartments] = useState([]);
@@ -58,74 +64,95 @@ const Apartments = () => {
     };
 
     const handleAgreement = (RequestFlat) => {
-        if (user && user.email) {
-            if (request.length > 0){
-                return Swal.fire({
-                    position: "top",
-                    icon: "error",
-                    title: "One user will be able to apply for only one Apartment!",
-                    confirmButtonText: "Ok",
-                })
-            }
-            else{
-                Swal.fire({
-                    title: "Are you sure?",
-                    text: `You Want to Rent Apartment No: ${RequestFlat.apartment_no}.`,
-                    icon: "question",
-                    showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "Yes, proceed!",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-
-                        const now = new Date();
-                        const requestDate = now.toLocaleString("en-GB", {
-                            day: "2-digit",
-                            month: "short",
-                            year: "numeric",
-                        }).replace(",", "");
-
-                        const requestedFlat = {
-                            reqFlatID: RequestFlat._id,
-                            reqUserName: user.displayName,
-                            reqUserEmail: user.email,
-                            reqFlatFloor: RequestFlat.floor_no,
-                            reqFlatBlock: RequestFlat.block_name,
-                            reqFlat: RequestFlat.apartment_no,
-                            reqFlatRent: RequestFlat.rent,
-                            reqStatus: "pending",
-                            agreementRequestDate: requestDate,
-                            agreementAcceptDate: null,                          
-                        }
-
-                        axiosSecure.post('/requests', requestedFlat)
-                            .then(res => {
-                                if (res.data.insertedId) {
-                                    Swal.fire({
-                                        title: "Request Sent!",
-                                        text: "Your request has been sent. Please wait for admin approval.",
-                                        icon: "success",
-                                    });
-                                    refetch();
-                                }
-                            })
-                    }
-                });
-            }
-        }
-        else {
-            Swal.fire({
+        if (!user || !user.email) {
+            return Swal.fire({
                 position: "top",
                 icon: "error",
                 title: "You are not logged in!",
-                text: "Please log in first.",
+                text: "Please log in to continue.",
                 confirmButtonText: "Go to Login",
             }).then(() => {
                 navigate("/login", { state: { from: location }, replace: true });
             });
         }
-    }
+
+        if (isAdmin) {
+            return Swal.fire({
+                position: "top",
+                icon: "error",
+                title: "Admins cannot rent apartments!",
+                confirmButtonText: "Ok",
+            });
+        }
+
+        if (isMember) {
+            return Swal.fire({
+                position: "top",
+                icon: "error",
+                title: "You have already rented an apartment.",
+                text: "You cannot rent more than one apartment.",
+                confirmButtonText: "Ok",
+            });
+        }
+
+        if (request.length > 0) {
+            return Swal.fire({
+                position: "top",
+                icon: "error",
+                title: "You can only apply for one apartment at a time.",
+                confirmButtonText: "Ok",
+            });
+        }
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: `You are about to request Apartment No: ${RequestFlat.apartment_no}.`,
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, proceed!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const now = new Date();
+                const requestDate = now
+                    .toLocaleString("en-GB", {
+                        day: "2-digit",
+                        month: "short",
+                        year: "numeric",
+                    })
+                    .replace(",", "");
+
+                const requestedFlat = {
+                    reqFlatID: RequestFlat._id,
+                    reqUserName: user.displayName,
+                    reqUserEmail: user.email,
+                    reqUserId: myInfo[0]._id,
+                    reqFlatFloor: RequestFlat.floor_no,
+                    reqFlatBlock: RequestFlat.block_name,
+                    reqFlat: RequestFlat.apartment_no,
+                    reqFlatRent: RequestFlat.rent,
+                    reqStatus: "pending",
+                    agreementRequestDate: requestDate,
+                    agreementAcceptDate: null,
+                    rentMonth: null,
+                };
+
+                axiosSecure.post("/requests", requestedFlat).then((res) => {
+                    if (res.data.insertedId) {
+                        Swal.fire({
+                            title: "Request Sent!",
+                            text: "Your request has been submitted successfully. Please wait for admin approval.",
+                            icon: "success",
+                        });
+                        refetch();
+                    }
+                });
+            }
+        });
+    };
+
+
 
     return (
         <div className="w-11/12 mx-auto mt-2 md:mt-4 mb-8 md:mb-12">
@@ -150,10 +177,10 @@ const Apartments = () => {
                             <p><span className="font-semibold">Floor No:</span> {apartment.floor_no}</p>
                             <p><span className="font-semibold">Block:</span> {apartment.block_name}</p>
                             <p><span className="font-semibold">Monthly Rent:</span> {apartment.rent}৳</p>
-                            <p className={apartment.availability === "unavailable" ? "text-red-500" : ""}>
-                                <span className="font-semibold">Status:</span> {apartment.availability === "available" ? "Available" : "Unavailable"}
+                            <p className={apartment.availability === "unavailable" || apartment.availability === "rented" ? "text-red-500" : ""}>
+                                <span className="font-semibold">Status:</span> <span className="capitalize">{apartment.availability}</span>
                             </p>
-                            <button onClick={() => handleAgreement(apartment)} className={`w-full text-center font-semibold border py-1 mt-2 transition-all duration-300 ${apartment.availability === "unavailable" ? "bg-red-200 text-gray-500" : "text-black border-black hover:bg-black hover:text-white"}`} disabled={apartment.availability === "unavailable"}>Agreement</button>
+                            <button onClick={() => handleAgreement(apartment)} className={`w-full text-center font-semibold border py-1 mt-2 transition-all duration-300 ${apartment.availability === "unavailable" || apartment.availability === "rented" ? "bg-red-200 text-gray-500" : "text-black border-black hover:bg-black hover:text-white"}`} disabled={apartment.availability === "unavailable" || apartment.availability === "rented"}>Agreement</button>
                         </div>
                     </div>
                 ))}

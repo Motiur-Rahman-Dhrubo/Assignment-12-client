@@ -19,6 +19,7 @@ const MemberDashboard = () => {
                     {/* Sidebar content here */}
                     <li><NavLink to='/member-dashboard/profile' className="hover:bg-white hover:text-black rounded-none">My Profile</NavLink></li>
                     <li><NavLink to='/member-dashboard/announcements' className="hover:bg-white hover:text-black rounded-none">Announcements</NavLink></li>
+                    <li><NavLink to='/member-dashboard/make-payment' className="hover:bg-white hover:text-black rounded-none">Make Payment</NavLink></li>
 
                     <div className="divider divider-neutral">Pages</div>
 
