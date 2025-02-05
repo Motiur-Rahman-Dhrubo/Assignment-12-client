@@ -4,7 +4,7 @@
   <img width="100%" src="./Screenshot_3.png"  />
 </div>
 
-### Welcome to JO.Car !!!
+### Welcome to M.tower !!!
 
 **M.tower** is a **comprehensive Building Management System** designed to simplify property management for administrators, enhance convenience for tenants, and ensure efficient collaboration among building members. With its modern UI and real-time data, M.tower provides a seamless experience for all stakeholders.
 
@@ -127,7 +127,7 @@ This will start the project at http://localhost:5173/
 ## 🔗 Resources & Links:
 
 - 🌐 Live Site: <a href="https://assignment-12-47b30.web.app/" target="_blank">
-    Chill Gamer
+    M.tower
   </a>
 - 📘 Firebase Docs: <a href="https://firebase.google.com/docs?gad_source=1&gclid=CjwKCAiAtYy9BhBcEiwANWQQL-DbXWI-_w3pwdhut53qzi7hqxihIvHRp_2sG6sO8T903WrROgityhoCs6YQAvD_BwE&gclsrc=aw.ds" target="_blank">
     Firebase Documentation
