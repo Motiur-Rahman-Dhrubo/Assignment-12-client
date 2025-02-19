@@ -63,6 +63,18 @@ const Apartments = () => {
         setCurrentPage(1);
     };
 
+    const handleSortByAscendingly = () => {
+        const sortedData = [...filteredApartments].sort((a, b) => a.rent - b.rent);
+        setFilteredApartments(sortedData);
+        setCurrentPage(1);
+    };
+
+    const handleSortByDescendingly = () => {
+        const sortedData = [...filteredApartments].sort((a, b) => b.rent - a.rent);
+        setFilteredApartments(sortedData);
+        setCurrentPage(1);
+    };
+
     const handleAgreement = (RequestFlat) => {
         if (!user || !user.email) {
             return Swal.fire({
