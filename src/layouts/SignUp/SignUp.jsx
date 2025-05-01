@@ -109,7 +109,7 @@ const SignUp = () => {
                             <label className="label">
                                 <span className="label-text">Name</span>
                             </label>
-                            <input type="text" name="name" placeholder="Name" className="input input-bordered rounded-none" required />
+                            <input type="text" name="name" className="input input-bordered rounded-none" required />
                         </div>
 
                         {
@@ -125,7 +125,7 @@ const SignUp = () => {
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" name="email" placeholder="Email" className="input input-bordered rounded-none" required />
+                            <input type="email" name="email" className="input input-bordered rounded-none" required />
                         </div>
 
                         {/* photo */}
@@ -133,7 +133,7 @@ const SignUp = () => {
                             <label className="label">
                                 <span className="label-text">Photo URL</span>
                             </label>
-                            <input type="url" name="photo" placeholder="Photo URL" className="input input-bordered rounded-none" required />
+                            <input type="url" name="photo" className="input input-bordered rounded-none" required />
                         </div>
 
                         {/* password */}
@@ -141,7 +141,7 @@ const SignUp = () => {
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" name="password" placeholder="Password" className="input input-bordered rounded-none" required />
+                            <input type="password" name="password" className="input input-bordered rounded-none" required />
                         </div>
 
                         {error.password && (
