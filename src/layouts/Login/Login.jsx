@@ -77,7 +77,7 @@ const Login = () => {
     return (
         <div className="hero min-h-screen w-11/12 mx-auto">
             <div className="hero-content flex px-0 w-full">
-                <div className="card w-full md:w-1/2 max-w-sm shrink-0 shadow-2xl">
+                <div className="card w-full md:w-1/2 max-w-sm shrink-0 shadow-2xl rounded-none">
                     <form className="card-body" onSubmit={handleLogin}>
 
                         {/* email */}
@@ -85,7 +85,7 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input name="email" type="email" placeholder="Email" className="input input-bordered" required />
+                            <input name="email" type="email" placeholder="Email" className="input input-bordered rounded-none" required />
                         </div>
 
                         {/* password */}
@@ -93,7 +93,7 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input name="password" type="password" placeholder="Password" className="input input-bordered" required />
+                            <input name="password" type="password" placeholder="Password" className="input input-bordered rounded-none" required />
                         </div>
 
                         {
@@ -105,8 +105,8 @@ const Login = () => {
                         }
 
                         <div className="form-control mt-6 gap-4">
-                            <input className="btn btn-primary" type="submit" value="Login" />
-                            <button onClick={handleGoogleSignOnClick} className="btn btn-neutral">Sign in with Google</button>
+                            <input className="btn btn-primary rounded-none" type="submit" value="Login" />
+                            <button onClick={handleGoogleSignOnClick} className="btn btn-neutral rounded-none">Sign in with Google</button>
                         </div>
                         <p className="mt-2 text-black">Don't have an account? <Link to="/sign-up" className="link-hover font-bold text-blue-600 bg-white px-1 rounded-lg">Sign Up</Link></p>
                     </form>
