@@ -23,7 +23,7 @@ const AvailableCoupons = () => {
                             <p className="flex-grow">{coupon.couponDescription}</p>
                             <div className="mt-2 flex justify-center">
                                 <CopyToClipboard text={coupon.couponCode} onCopy={() => setCopiedCode(coupon.couponCode)}>
-                                    <button className={`btn btn-primary btn-sm ${copiedCode === coupon.couponCode ? "btn-success" : ""}`}>
+                                    <button className={`btn btn-primary rounded-none btn-sm ${copiedCode === coupon.couponCode ? "btn-success" : ""}`}>
                                         {copiedCode === coupon.couponCode ? "Copied!" : "Copy Code"}
                                     </button>
                                 </CopyToClipboard>
