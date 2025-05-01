@@ -15,8 +15,18 @@
 
 ## Admin Credential :
 
-- Admin Email: zxc@zxc.zxc
-- Admin password: zxcZXC
+- Admin Email: admin1@gmail.com
+- Admin password: ,Adgjmptw
+
+## Member Credential :
+
+- Member Email: member1@gmail.com
+- Member password: ,Adgjmptw
+
+## User Credential :
+
+- User Email: user1@gmail.com
+- User password: ,Adgjmptw
 
 ## 🛠️ Technologies Used:
 
