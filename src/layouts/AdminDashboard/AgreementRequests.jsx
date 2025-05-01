@@ -97,7 +97,7 @@ const AgreementRequests = () => {
 
 
     return (
-        <div className="w-11/12 mx-auto mt-2 md:mt-5 flex flex-col md:gap-4 gap-3">
+        <div className="w-11/12 mx-auto mt-2 md:mt-5 lg:mt-10 flex flex-col md:gap-4 gap-3">
             {
                 pendingRequests.map((request) => (
                     <div key={request._id} className="border p-4">

@@ -97,14 +97,14 @@ const ManageCoupons = () => {
                                     <td>{coupon.discountPercentage}</td>
                                     <td>{coupon.couponDescription}</td>
                                     <td className={coupon.availability === 'available' ? "text-green-500" : "text-red-500"}>{coupon.availability}</td>
-                                    <td><button onClick={() => { handleAvailability(coupon) }} className={coupon.availability === 'available' ? "btn btn-xs btn-error" : "btn btn-xs btn-success"}>{coupon.availability === 'available' ? "Disable" : "Enable"}</button></td>
+                                    <td><button onClick={() => handleAvailability(coupon)} className={`btn btn-xs rounded-none ${coupon.availability === 'available' ? 'btn-error' : 'btn-success'}`}>{coupon.availability === 'available' ? 'Disable' : 'Enable'}</button></td>
                                 </tr>
                             ))
                         }
                     </tbody>
                 </table>
             </div>
-            <div className="flex mt-4 justify-center"><button onClick={addCoupon} className="btn btn-primary">Add Coupon</button></div>
+            <div className="flex mt-4 justify-center"><button onClick={addCoupon} className="btn btn-primary rounded-none">Add Coupon</button></div>
         </div>
     );
 };
