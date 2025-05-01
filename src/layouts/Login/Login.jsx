@@ -108,7 +108,7 @@ const Login = () => {
                             <input className="btn btn-primary rounded-none" type="submit" value="Login" />
                             <button onClick={handleGoogleSignOnClick} className="btn btn-neutral rounded-none">Sign in with Google</button>
                         </div>
-                        <p className="mt-2 text-black">Don't have an account? <Link to="/sign-up" className="link-hover font-bold text-blue-600 bg-white px-1 rounded-lg">Sign Up</Link></p>
+                        <p className="mt-2 text-black">Don't have an account? <Link to="/sign-up" className="link-hover font-bold text-blue-600 bg-white px-1">Sign Up</Link></p>
                     </form>
                 </div>
                 <div className="hidden md:flex w-1/2 max-h-[500px]">

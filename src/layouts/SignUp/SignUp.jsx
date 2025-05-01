@@ -101,7 +101,7 @@ const SignUp = () => {
     return (
         <div className="hero min-h-screen w-11/12 mx-auto">
             <div className="hero-content flex px-0 w-full">
-                <div className="card w-full md:w-1/2 max-w-sm shrink-0 shadow-2xl">
+                <div className="card w-full md:w-1/2 max-w-sm shrink-0 shadow-2xl rounded-none">
                     <form className="card-body" onSubmit={handleSignUp}>
 
                         {/* name */}
@@ -109,7 +109,7 @@ const SignUp = () => {
                             <label className="label">
                                 <span className="label-text">Name</span>
                             </label>
-                            <input type="text" name="name" placeholder="Name" className="input input-bordered" required />
+                            <input type="text" name="name" placeholder="Name" className="input input-bordered rounded-none" required />
                         </div>
 
                         {
@@ -125,7 +125,7 @@ const SignUp = () => {
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" name="email" placeholder="Email" className="input input-bordered" required />
+                            <input type="email" name="email" placeholder="Email" className="input input-bordered rounded-none" required />
                         </div>
 
                         {/* photo */}
@@ -133,7 +133,7 @@ const SignUp = () => {
                             <label className="label">
                                 <span className="label-text">Photo URL</span>
                             </label>
-                            <input type="url" name="photo" placeholder="Photo URL" className="input input-bordered" required />
+                            <input type="url" name="photo" placeholder="Photo URL" className="input input-bordered rounded-none" required />
                         </div>
 
                         {/* password */}
@@ -141,7 +141,7 @@ const SignUp = () => {
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" name="password" placeholder="Password" className="input input-bordered" required />
+                            <input type="password" name="password" placeholder="Password" className="input input-bordered rounded-none" required />
                         </div>
 
                         {error.password && (
@@ -151,9 +151,9 @@ const SignUp = () => {
                         )}
 
                         <div className="form-control mt-6">
-                            <input className="btn btn-primary" type="submit" value="Sign Up" />
+                            <input className="btn btn-primary rounded-none" type="submit" value="Sign Up" />
                         </div>
-                        <p className="mt-2 text-black">Don't have an account? <Link to="/login" className="link-hover font-bold text-blue-600 bg-white px-1 rounded-lg">Login</Link></p>
+                        <p className="mt-2 text-black">Don't have an account? <Link to="/login" className="link-hover font-bold text-blue-600 bg-white px-1">Login</Link></p>
                     </form>
                 </div>
                 <div className="hidden md:flex w-1/2 max-h-[400px]">
