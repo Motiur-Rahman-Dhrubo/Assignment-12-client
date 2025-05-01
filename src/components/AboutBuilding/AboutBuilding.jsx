@@ -15,43 +15,43 @@ const AboutBuilding = () => {
             <ul className="md:mt-5 mt-3 flex flex-col gap-2 md:gap-4">
                 <li className="flex items-center gap-4 hover:gap-6 transition-all duration-[300ms]">
                     <span className="text-indigo-600 text-3xl">&#10003;</span>
-                    <p className="md:text-xl text-lg text-gray-700">
+                    <p className="md:text-xl text-lg text-gray-700 cursor-grab">
                         Car parking available on the ground floor.
                     </p>
                 </li>
                 <li className="flex items-center gap-4 hover:gap-6 transition-all duration-[300ms]">
                     <span className="text-indigo-600 text-3xl">&#10003;</span>
-                    <p className="md:text-xl text-lg text-gray-700">
+                    <p className="md:text-xl text-lg text-gray-700 cursor-grab">
                         Spacious area in front of the building with a beautiful garden.
                     </p>
                 </li>
                 <li className="flex items-center gap-4 hover:gap-6 transition-all duration-[300ms]">
                     <span className="text-indigo-600 text-3xl">&#10003;</span>
-                    <p className="md:text-xl text-lg text-gray-700">
+                    <p className="md:text-xl text-lg text-gray-700 cursor-grab">
                         Four lifts operating 24/7.
                     </p>
                 </li>
                 <li className="flex items-center gap-4 hover:gap-6 transition-all duration-[300ms]">
                     <span className="text-indigo-600 text-3xl">&#10003;</span>
-                    <p className="md:text-xl text-lg text-gray-700">
+                    <p className="md:text-xl text-lg text-gray-700 cursor-grab">
                         Generator for backup electricity.
                     </p>
                 </li>
                 <li className="flex items-center gap-4 hover:gap-6 transition-all duration-[300ms]">
                     <span className="text-indigo-600 text-3xl">&#10003;</span>
-                    <p className="md:text-xl text-lg text-gray-700">
+                    <p className="md:text-xl text-lg text-gray-700 cursor-grab">
                         Gas line connection for all flats.
                     </p>
                 </li>
                 <li className="flex items-center gap-4 hover:gap-6 transition-all duration-[300ms]">
                     <span className="text-indigo-600 text-3xl">&#10003;</span>
-                    <p className="md:text-xl text-lg text-gray-700">
+                    <p className="md:text-xl text-lg text-gray-700 cursor-grab">
                         Wi-Fi and DTH services for every flat.
                     </p>
                 </li>
                 <li className="flex items-center gap-4 hover:gap-6 transition-all duration-[300ms]">
                     <span className="text-indigo-600 text-3xl">&#10003;</span>
-                    <p className="md:text-xl text-lg text-gray-700">
+                    <p className="md:text-xl text-lg text-gray-700 cursor-grab">
                         24/7 security with guards and CCTV surveillance.
                     </p>
                 </li>

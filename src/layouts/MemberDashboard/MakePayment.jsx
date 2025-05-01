@@ -2,20 +2,39 @@ import Swal from "sweetalert2";
 import useRequest from "../../hooks/useRequest";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useNavigate } from "react-router-dom";
-
+import { useEffect, useState } from "react";
 
 const MakePayment = () => {
-
     const [request] = useRequest();
     const axiosSecure = useAxiosSecure();
     const navigate = useNavigate();
+
+    const [formData, setFormData] = useState({
+        email: "",
+        floor: "",
+        block: "",
+        flat: "",
+        rent: ""
+    });
+
+    useEffect(() => {
+        if (request[0]) {
+            setFormData({
+                email: request[0].reqUserEmail,
+                floor: request[0].reqFlatFloor,
+                block: request[0].reqFlatBlock,
+                flat: request[0].reqFlat,
+                rent: `${request[0].reqFlatRent}৳`
+            });
+        }
+    }, [request]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const month = e.target.month.value;
         Swal.fire({
             title: "Are you sure?",
-            text: `You want to confirm ${request[0]?.reqFlat} for ${month}!`,
+            text: `You want to confirm ${formData.flat} for ${month}!`,
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
@@ -23,9 +42,7 @@ const MakePayment = () => {
             confirmButtonText: "Yes, confirm!",
         }).then(async (result) => {
             if (result.isConfirmed) {
-                const updateMonth = {
-                    selectedMonth: month,
-                };
+                const updateMonth = { selectedMonth: month };
 
                 const requestRes = await axiosSecure.patch(`/request-month/${request[0]?._id}`, updateMonth);
                 console.log(requestRes)
@@ -33,7 +50,7 @@ const MakePayment = () => {
                 if (requestRes.data.modifiedCount > 0) {
                     Swal.fire({
                         title: "Confirmed!",
-                        text: `${request[0]?.reqFlat} no apartment has been confirmed for ${month}. Pay Now.`,
+                        text: `${formData.flat} no apartment has been confirmed for ${month}. Pay Now.`,
                         icon: "success",
                         confirmButtonColor: "#3085d6",
                         confirmButtonText: "Proceed Payment",
@@ -55,45 +72,43 @@ const MakePayment = () => {
                     <label className="label">
                         <span className="label-text">Member Email:</span>
                     </label>
-                    <input type="text" defaultValue={request[0]?.reqUserEmail} className="input input-bordered" readOnly />
+                    <input type="text" value={formData.email} className="input input-bordered rounded-none" readOnly />
                 </div>
 
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text">Floor No:</span>
                     </label>
-                    <input type="text" defaultValue={request[0]?.reqFlatFloor} className="input input-bordered" readOnly />
+                    <input type="text" value={formData.floor} className="input input-bordered rounded-none" readOnly />
                 </div>
 
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text">Block Name:</span>
                     </label>
-                    <input type="text" defaultValue={request[0]?.reqFlatBlock} className="input input-bordered" readOnly />
+                    <input type="text" value={formData.block} className="input input-bordered rounded-none" readOnly />
                 </div>
 
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text">Apartment No:</span>
                     </label>
-                    <input type="text" defaultValue={request[0]?.reqFlat} className="input input-bordered" readOnly />
+                    <input type="text" value={formData.flat} className="input input-bordered rounded-none" readOnly />
                 </div>
 
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text">Monthly Rent:</span>
                     </label>
-                    <input type="text" defaultValue={`${request[0]?.reqFlatRent}৳`} className="input input-bordered" readOnly />
+                    <input type="text" value={formData.rent} className="input input-bordered rounded-none" readOnly />
                 </div>
 
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text">Select Month:</span>
                     </label>
-                    <select className="select select-bordered" defaultValue={""} name="month" required>
-                        <option value="" disabled>
-                            Select a month
-                        </option>
+                    <select className="select select-bordered rounded-none" defaultValue={""} name="month" required>
+                        <option value="" disabled>Select a month</option>
                         <option value="January">January</option>
                         <option value="February">February</option>
                         <option value="March">March</option>
@@ -109,7 +124,7 @@ const MakePayment = () => {
                     </select>
                 </div>
 
-                <input className="btn btn-primary w-full mt-4" type="submit" value="Pay Now" />
+                <input className="btn btn-primary w-full mt-4 rounded-none" type="submit" value="Pay Now" />
 
             </form>
         </div>
