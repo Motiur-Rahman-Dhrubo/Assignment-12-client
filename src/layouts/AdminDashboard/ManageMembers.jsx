@@ -56,7 +56,7 @@ const ManageMembers = () => {
                                     <th>{index + 1}</th>
                                     <td>{member.userName}</td>
                                     <td>{member.userEmail}</td>
-                                    <td><button onClick={() => { handleDelete(member) }} className="btn btn-xs btn-error">Delete</button></td>
+                                    <td><button onClick={() => { handleDelete(member) }} className="btn btn-xs btn-error rounded-none">Delete</button></td>
                                 </tr>
                             ))
                         }
