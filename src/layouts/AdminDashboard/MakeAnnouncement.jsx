@@ -34,17 +34,17 @@ const MakeAnnouncement = () => {
                     <label className="label">
                         <span className="label-text">Announcement Title:</span>
                     </label>
-                    <input type="text" name="title" placeholder="Announcement Title" className="input input-bordered" required />
+                    <input type="text" name="title" className="input input-bordered rounded-none" required />
                 </div>
 
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text">Announcement Description:</span>
                     </label>
-                    <input type="text" name="description" placeholder="Announcement Description" className="input input-bordered" required />
+                    <input type="text" name="description" className="input input-bordered rounded-none" required />
                 </div>
 
-                <input className="btn btn-primary w-full mt-4" type="submit" value="Add Announcement" />
+                <input className="btn btn-primary w-full mt-4 rounded-none" type="submit" value="Add Announcement" />
 
             </form>
         </div>
