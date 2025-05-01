@@ -100,7 +100,7 @@ const AgreementRequests = () => {
         <div className="w-11/12 mx-auto mt-2 md:mt-5 flex flex-col md:gap-4 gap-3">
             {
                 pendingRequests.map((request) => (
-                    <div key={request._id} className="border p-4 rounded-lg">
+                    <div key={request._id} className="border p-4">
                         <h2 className="text-base md:text-lg"><span className="font-semibold">User Name: </span>{request.reqUserName}</h2>
                         <h2 className="text-base md:text-lg"><span className="font-semibold">User Email: </span>{request.reqUserEmail}</h2>
                         <div className="text-sm md:text-base flex flex-col md:flex-row mt-2">
@@ -113,8 +113,8 @@ const AgreementRequests = () => {
                         </div>
                         <p className="text-sm md:text-base mt-2"><span className="font-semibold">Agreement Request Date: </span>{request.agreementRequestDate}</p>
                         <div className="flex gap-2 mt-4">
-                            <button onClick={() => handleAccept(request)} className="btn btn-primary btn-sm">Accept Request</button>
-                            <button onClick={() => handleReject(request._id)} className="btn btn-secondary btn-sm">Reject Request</button>
+                            <button onClick={() => handleAccept(request)} className="btn btn-primary btn-sm rounded-none">Accept Request</button>
+                            <button onClick={() => handleReject(request._id)} className="btn btn-secondary btn-sm rounded-none">Reject Request</button>
                         </div>
                     </div>
                 ))
