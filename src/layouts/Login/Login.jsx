@@ -85,7 +85,7 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input name="email" type="email" placeholder="Email" className="input input-bordered rounded-none" required />
+                            <input name="email" type="email" className="input input-bordered rounded-none" required />
                         </div>
 
                         {/* password */}
@@ -93,7 +93,7 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input name="password" type="password" placeholder="Password" className="input input-bordered rounded-none" required />
+                            <input name="password" type="password" className="input input-bordered rounded-none" required />
                         </div>
 
                         {
