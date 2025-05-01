@@ -46,24 +46,24 @@ const Payment = () => {
 
     return (
         <div className="w-11/12 mx-auto mt-2 md:mt-5">
-            <div className="border rounded-lg p-4">
+            <div className="border p-4">
                 <h2 className="md:text-xl text-lg">Please, Pay <strong>{totalMoney}৳</strong> for the month of <strong>{request[0]?.rentMonth}</strong></h2>
                 {discountApplied && (
                     <p className="text-green-600 mt-2">
                         A discount has been applied to your total.
                     </p>
                 )}
-                <div className="divider"></div>
+                <div className="divider m-0"></div>
                 <form onSubmit={handleSubmit}>
 
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Have You Any Coupon?</span>
+                            <span className="label-text">Do you have a coupon? Please enter the coupon code below.</span>
                         </label>
-                        <input type="text" name="coupon" placeholder="Coupon Code" className="input input-bordered" required />
+                        <input type="text" name="coupon" className="input input-bordered rounded-none" required />
                     </div>
 
-                    <input className="btn btn-primary w-full mt-4" type="submit" value="Apply Coupon" />
+                    <input className="btn btn-primary w-full mt-4 rounded-none" type="submit" value="Apply Coupon" />
 
                 </form>
             </div>
